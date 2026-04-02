@@ -61,19 +61,13 @@ def ask(
         method="POST",
     )
 
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            data = json.loads(resp.read())
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode(errors="replace")
-        return f"HTTP {exc.code}: {body[:200]}"
-    except Exception as exc:
-        return f"error: {exc}"
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        data = json.loads(resp.read())
 
     if "error" in data:
-        return str(data["error"])
+        raise RuntimeError(str(data["error"]))
 
     try:
         return data["choices"][0]["message"]["content"].strip()
     except (KeyError, IndexError) as exc:
-        return f"unexpected response: {exc}"
+        raise RuntimeError(f"unexpected response: {exc}")
