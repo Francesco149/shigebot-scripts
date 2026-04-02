@@ -22,6 +22,15 @@ import pepe
 import random
 
 
+_emotes = {
+  0: "WhenLifeGetsAtYou",
+  1: "FeelsBadMan",
+  2: "FeelsWeirdMan",
+  3: "NOOOOvanish",
+  4: "NOWAYING",
+}
+
+
 def main():
     current_set = pepe.get_set()
     bets  = [random.choice(current_set) for _ in current_set]
@@ -32,4 +41,4 @@ def main():
         sb.say(f"{sb.ctx.prefix}pepe {bet}")
         sb.say(pull)
 
-    sb.reply(f"{hits}/{len(current_set)}")
+    sb.reply(f"{hits}/{len(current_set)} {_emotes[hits]}")
