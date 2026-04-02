@@ -32,4 +32,4 @@ def main():
         sb.say(f"{sb.ctx.prefix}pepe {bet}")
         sb.say(pull)
 
-    sb.say(f"{hits}/{len(current_set)}")
+    sb.reply(f"{hits}/{len(current_set)}")
