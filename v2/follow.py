@@ -22,4 +22,4 @@ def main():
     if not display:
         return
 
-    sb.say(f"@{display} just followed! Welcome to the camp! AYAYA")
+    sb.say(f"@{display} just followed! Welcome to the headpats factory! AYAYA")
