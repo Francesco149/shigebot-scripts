@@ -23,11 +23,10 @@ import random
 
 
 _emotes = {
-  0: "WhenLifeGetsAtYou",
-  1: "FeelsBadMan",
+  3: "SMH",
   2: "FeelsWeirdMan",
-  3: "NOOOOvanish",
-  4: "NOWAYING",
+  1: "NOOOOvanish",
+  0: "NOWAYING",
 }
 
 
@@ -41,4 +40,9 @@ def main():
         sb.say(f"{sb.ctx.prefix}pepe {bet}")
         sb.say(pull)
 
-    sb.reply(f"{hits}/{len(current_set)} {_emotes[hits]}")
+    off = len(current_set) - hits
+    emote = _emotes.get(off, "WhenLifeGetsAtYou")
+    sb.say(f"{hits}/{len(current_set)} {emote}")
+
+    if hits == len(current_set):
+      sb.reply("HOLY NO WAY A JACKPOT")
